@@ -21,6 +21,7 @@ namespace GenerateVideoApp
                 endpoint,
                 apiKey,
                 "preview");
+
             InitializeComponent();
             
         }
