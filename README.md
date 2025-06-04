@@ -4,4 +4,4 @@
 
 **How to Run**
 Add appsettings.json to project directory, include the endpoint and ApiKey. Ensure in the appsettings.json File Properties, Copy to Output Directory is set to Copy Always. 
-![Description](GenerateVideoApp/images/AppSettingInstructions.png)
+![Description](GenerateVideoApp/images/AppSettingsInstructions.png)
