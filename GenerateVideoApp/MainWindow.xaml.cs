@@ -10,6 +10,7 @@ namespace GenerateVideoApp
     public partial class MainWindow : Window
     {
         AIVideoGenerator AIVideoGenerator;
+
         public MainWindow()
         {
             var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
@@ -27,6 +28,11 @@ namespace GenerateVideoApp
 
         private async void GenerateVideo_Click(object sender, RoutedEventArgs e)
         {
+            
+            string loadingIconPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "media", "loadingicon.mp4");
+            VideoPlayer.Source = new Uri(loadingIconPath, UriKind.Absolute);
+            VideoPlayer.Play();
+
             string prompt = PromptInput.Text;
             if (string.IsNullOrWhiteSpace(prompt))
             {
@@ -34,10 +40,10 @@ namespace GenerateVideoApp
                 return;
             }
 
-            var videoUrl = await AIVideoGenerator.GenerateVideoAsync(prompt, 10);
+            string VideoFilePath = await AIVideoGenerator.GenerateVideoAsync(prompt, 10);
 
 
-            VideoPlayer.Source = new Uri(videoUrl, UriKind.Absolute);
+            VideoPlayer.Source = new Uri(VideoFilePath, UriKind.Absolute);
             VideoPlayer.Play();
             
         }
